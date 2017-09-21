@@ -25,7 +25,7 @@ url = "https://github.com/byronz"
 fa_icon = "fa-github"
 
 [[params.social]]
-url = "https://linkedin.com/in/byronz"
+url = "https://linkedin.com/in/byronzhu"
 fa_icon = "fa-linkedin-square"
 
 [[params.social]]
@@ -33,5 +33,5 @@ url = "/index.xml"
 fa_icon = "fa-rss"
 
 [[params.socialshare]]
-url = "https://linkedin.com/in/byronz"
+url = "https://linkedin.com/in/byronzhu"
 fa_icon = "fa-linkedin-square"
