@@ -1,0 +1,37 @@
+baseurl = "https://byronz.github.io"
+languageCode = "en-us"
+title = "igni"
+theme = "hucore"
+copyright = "&copy; 2017 | 🇨🇳 Byron ZHU 🇨🇦"
+googleAnalytics = "trackingcode"
+
+[taxonomies]
+tag = "tags"
+category = "categories"
+
+[params]
+description = "tech blog"
+keywords = ["keyword 1", "keyword 2", "keyword 3"]
+author = "Byron ZHU"
+sharingicons = true
+displayauthor = true
+
+[params.highlight]
+style = "solarized-dark"
+languages = ["python", "bash", "json", "java", "html", "yaml"]
+
+[[params.social]]
+url = "https://github.com/byronz"
+fa_icon = "fa-github"
+
+[[params.social]]
+url = "https://linkedin.com/in/byronz"
+fa_icon = "fa-linkedin-square"
+
+[[params.social]]
+url = "/index.xml"
+fa_icon = "fa-rss"
+
+[[params.socialshare]]
+url = "https://linkedin.com/in/byronz"
+fa_icon = "fa-linkedin-square"
