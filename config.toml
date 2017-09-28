@@ -1,9 +1,9 @@
 baseurl = "https://byronz.github.io"
 languageCode = "en-us"
-title = "igni"
+title = "igni 🇨🇳 🇨🇦"
 theme = "hucore"
-copyright = "&copy; 2017 | 🇨🇳 Byron ZHU 🇨🇦"
-googleAnalytics = "trackingcode"
+copyright = "&copy; 2017 | 朱曉清 | <small>powered by</small> <a href=\"gohugo.io\" target=\"_blank\">Hugo</a>"
+# googleAnalytics = "trackingcode"
 
 [taxonomies]
 tag = "tags"
@@ -11,7 +11,7 @@ category = "categories"
 
 [params]
 description = "tech blog"
-keywords = ["keyword 1", "keyword 2", "keyword 3"]
+keywords = ["language", "programming", "automation"]
 author = "Byron ZHU"
 sharingicons = true
 displayauthor = true
