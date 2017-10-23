@@ -13,3 +13,27 @@ The first mistake you might have about [**Github Pages**](https://help.github.co
 [Hugo deployment section](https://gohugo.io/hosting-and-deployment/hosting-on-github/) `Host GitHub User or Organization Pages` deliberates the steps and demonstrates how to set the git submodule.
 
 Few themes also good for technical blogs: *After Dark*, *Hugo Nuo*, *Future Imperfect*, *Cactus*.
+
+
+## Hack in Header.html
+
+the hucore template has an issue in rendering LaTex math using MathJax
+
+remove the setting in header and footer and put this
+
+```
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+```

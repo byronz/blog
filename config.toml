@@ -1,6 +1,6 @@
 baseurl = "https://byronz.github.io"
 languageCode = "en-us"
-title = "igni 🇨🇳 🇨🇦"
+title = "雜"
 theme = "hucore"
 copyright = "&copy; 2017 | 朱曉清 | <small>powered by</small> <a href=\"gohugo.io\" target=\"_blank\">Hugo</a>"
 # googleAnalytics = "trackingcode"
@@ -15,10 +15,11 @@ keywords = ["language", "programming", "automation"]
 author = "Byron ZHU"
 sharingicons = true
 displayauthor = true
+fontbody = "Hiragino Sans GB"
 
 [params.highlight]
 style = "solarized-dark"
-languages = ["python", "bash", "json", "java", "html", "yaml"]
+languages = ["python", "bash", "json", "java", "yaml", "elixir", "scala"]
 
 [[params.social]]
 url = "https://github.com/byronz"
