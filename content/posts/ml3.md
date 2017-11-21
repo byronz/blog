@@ -1,5 +1,5 @@
 ---
-title: "ML Week3"
+title: "ML Week3 Logistic Regression (Classification)"
 date: 2017-10-15T20:51:43-04:00
 draft: true
 tags: [ML, AI, Octave]

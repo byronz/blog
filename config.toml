@@ -3,7 +3,8 @@ languageCode = "en-us"
 title = "雜"
 theme = "hucore"
 copyright = "&copy; 2017 | 朱曉清 | <small>powered by</small> <a href=\"gohugo.io\" target=\"_blank\">Hugo</a>"
-# googleAnalytics = "trackingcode"
+paginate = 10
+hasCJKLanguage = true
 
 [taxonomies]
 tag = "tags"

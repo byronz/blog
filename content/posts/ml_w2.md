@@ -1,6 +1,7 @@
 ---
 title: "ML Week2"
 date: 2017-10-08T20:08:02-04:00
+tags: [ML, AI]
 ---
 
 ## Multivariate Linear Regression
@@ -37,10 +38,3 @@ possible problem for inverstible
 
 - redudant feature
 - n>m
-
-
-## Octave
-
-who
-whos
-load
