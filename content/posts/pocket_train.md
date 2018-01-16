@@ -41,3 +41,28 @@ tags: ["Pocket Train", "NimbleBit", ]
 
 ### Japan JR
 
+### North America
+
+
+- vancouver, calgary
+![CPR](https://upload.wikimedia.org/wikipedia/commons/7/7b/Canadian_Pacific_Railway_logo_2014.svg)
+
+- Union Pacific
+![UP](https://upload.wikimedia.org/wikipedia/commons/d/de/Union_pacific_railroad_logo.svg)
+
+- CSX eastern
+![CSX](https://deltafonts.com/wp-content/uploads/CSX-Group-Logo.png)
+
+- Amtrak central line
+![logo](https://upload.wikimedia.org/wikipedia/commons/e/eb/Amtrak_logo.svg)
+
+### Australia
+
+![passenger railway map](https://upload.wikimedia.org/wikipedia/commons/d/de/Passenger_rail_services_in_Australia_en.png)
+
+
+- ![Aurizon logo](https://upload.wikimedia.org/wikipedia/en/thumb/0/05/Aurizon_logo.svg/320px-Aurizon_logo.svg.png) yellow
+- ![logo](https://upload.wikimedia.org/wikipedia/en/4/44/Queensland_Rail.png) Red
+- ![Pacific National](https://pacificnational.com.au/images/icons/logo-pacific-national-large.png)
+
+- ![KiwiRail](https://upload.wikimedia.org/wikipedia/en/d/db/Kiwirail_Logo.png)
