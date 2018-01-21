@@ -2,6 +2,7 @@
 title: "Ski Resort Clusterring near Montreal"
 date: 2017-11-18T23:08:20-05:00
 tags: ['k-means', 'ski resort', 'ml']
+
 ---
 
 ![massif](https://www.lemassif.com/assets/medias/plan-des-pistes.jpg)
