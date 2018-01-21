@@ -1,7 +1,6 @@
 ---
 title: "Ski Resort Clusterring near Montreal"
 date: 2017-11-18T23:08:20-05:00
-draft: true
 tags: ['k-means', 'ski resort', 'ml']
 ---
 

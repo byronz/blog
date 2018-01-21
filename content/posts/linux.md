@@ -5,6 +5,86 @@ tags: [linux, tool, utilities]
 ---
 
 ---
+## oh my zsh
+
+```
+alias gr='grep -Rnif /dev/stdin . <<<'
+alias tri='tree -I "*.pyc|__pycache__"'
+alias youtube-dl='/usr/local/Cellar/youtube-dl/2018.01.14/bin/youtube-dl'
+alias y2mp3='youtube-dl --extract-audio --audio-format mp3  --audio-quality 0'
+
+# alias for git
+alias gs="git status"
+alias gsv="git status -v"
+alias gaa="git add -A"
+alias gcm="git commit -m"
+alias gk="git checkout"
+alias gd='git diff'
+alias gdc='git diff --cached'
+
+<!-- export JAVA_HOME=$(/usr/libexec/java_home) -->
+export ANSIBLE_SSH_CONTROL_PATH='/tmp/asb-%%h-%%p-%%r'
+
+```
+
+```bash
+# agnoster prompt modified
+ZSH_THEME_GIT_PROMPT_DIRTY='±'
+
+function _git_prompt_info() {
+  ref=$(git symbolic-ref HEAD 2> /dev/null) || ref="➦ $(git show-ref --head -s --abbrev |head -n1 2> /dev/null)"
+  echo "${ref/refs\/heads\// }$(parse_git_dirty)"
+}
+
+function _git_info() {
+  if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
+    local BG_COLOR=green
+    if [[ -n $(parse_git_dirty) ]]; then
+      BG_COLOR=yellow
+      FG_COLOR=black
+    fi
+
+    if [[ ! -z $(git ls-files --other --exclude-standard 2> /dev/null) ]]; then
+        BG_COLOR=red
+        FG_COLOR=white
+    fi
+    echo "%{%K{$BG_COLOR}%}%{%F{$FG_COLOR}%} $(_git_prompt_info) %{%F{$BG_COLOR}%K{blue}%}"
+  else
+    echo "%{%K{blue}%}"
+  fi
+}
+
+function virtualenv_info {
+    [ $VIRTUAL_ENV ] && echo '('`basename $VIRTUAL_ENV`') '
+}
+
+PROMPT_HOST='%{%b%F{gray}%K{black}%} %(?.%{%F{green}%}✔.%{%F{red}%}✘)%{%F{yellow}%} %n %{%F{black}%}'
+PROMPT_DIR='%{%F{white}%} %~%  '
+PROMPT_SU='%(!.%{%k%F{blue}%K{black}%}%{%F{yellow}%} ⚡ %{%k%F{black}%}.%{%k%F{blue}%})%{%f%k%b%}'
+
+PROMPT='%{%f%b%k%}$PROMPT_HOST$(_git_info)$PROMPT_DIR$PROMPT_SU
+$(virtualenv_info)❯ '
+RPROMPT='%{$fg[green]%}[%*]%{$reset_color%}'
+```
+
+## tar, gunzip and bzip2
+
+```bash
+
+# x => extract
+tar -xvf example.tar  [target] # optional can extract specific target file or subfolder
+tar -xzvf example.tar.gz
+tar -xjvf example.tar.bz2
+
+# c => create
+tar -czvf example.tar.gz   example
+
+```
+
+![compression time](https://www.rootusers.com/wp-content/uploads/2015/08/compression-time.png)
+![ratio](https://www.rootusers.com/wp-content/uploads/2015/08/compression-ratio.png)
+
+
 
 ## homebrew 
 
@@ -67,3 +147,4 @@ asciinema rec
 ## References
 
 - https://explainshell.com/
+
