@@ -85,8 +85,8 @@ func Pic(dx, dy int) [][]uint8 {
 
 ## strings
 
-"" is string
-'' is a character or char, but it's not 8-bit ascii
+`""` is string
+`''` is a character or char, but it's not 8-bit ascii
 
 in **go**, the word **rune** is used
 
@@ -98,7 +98,7 @@ in **go**, the word **rune** is used
 
 ```go
 for pos, char := range "Gő!汉字熱" {
-    fmt.Printf("character '%c' starts at byte position %d\n", char, p汉字熱os汉字熱)
+    fmt.Printf("character '%c' starts at byte position %d\n", char, pos)
 }
 //character 'G' [type => 0] starts at byte position int32
 //character 'ő' [type => 1] starts at byte position int32

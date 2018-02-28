@@ -1,7 +1,6 @@
 ---
 title: "Elixir Part I - Playbook"
 date: 2017-11-30T17:55:57-05:00
-draft: true
 tags: ['programming', 'elixir', 'erlang']
 ---
 
