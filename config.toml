@@ -20,7 +20,7 @@ fontbody = "Hiragino Sans GB"
 
 [params.highlight]
 style = "solarized-dark"
-languages = ["python", "bash", "json", "java", "yaml", "elixir", "scala"]
+languages = ["python", "bash", "json", "java", "yaml", "elixir", "scala", "go"]
 
 [[params.social]]
 url = "https://github.com/byronz"

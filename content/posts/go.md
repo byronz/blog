@@ -3,7 +3,24 @@ title: "Go"
 date: 2017-12-14T17:45:54-05:00
 tags: [go, programming, concurrency]
 ---
-# Doumentation
+
+## Context
+
+### Paradim
+
+- compiled
+- concurrent
+- imperative
+- structured
+
+### Authors
+
+original
+- Robert Griesemer
+- Rob Pike (his spouse French Renee)
+- Ken Thompson
+
+### Doumentation
 
 Go has well balanced the documentation and code by integrating a powerful eco-system within the tool sets.
 
@@ -11,41 +28,95 @@ Go has well balanced the documentation and code by integrating a powerful eco-sy
 2. `godoc fmt Fprintf` or `godoc builtin append` quick terminal check
 3. comments prefix as document stub, but no specific requirements for parameters and return value, as go document tool will dynamically parse it from the source code
 
-# Context
 
-## Paradigm
-
-- compiled
-- concurrent
-- imperative
-- structured
-
-## Authors
-
-original
-- Robert Griesemer
-- Rob Pike (his spouse French Renee)
-- Ken Thompson
-
-## Tools
+### Tools
 
 delve debugging server
 
 godoc
 
-## Types
+# Basics
 
-> static vs abstract
+## Static Types (Built In)
 
-static are basically all the common *builtin* types
+```go
+bool
+
+string
+
+int int8 int16 int32 int64
+uint uint8 uint16 uint32 uint64 uintptr
+
+byte //is an alias for uint8 
+rune //is an alias for int32
+
+float32 float64
+complex64 complex128
+
+```
+
 
 `interface{}` is any type or `object` in other OOP-oriented language
 
-## Struct
+### Type Casting
+
+The expression T(v) converts the value v to the type T
+
+### Type inference
+
+```go
+v := 'a'
+//v is of type int32  97
+fmt.Printf("v is of type %T  %v\n", v, v) 
+v := "a"  //v is of type string  a
+```
+
+### Strings
+
+`""` is string
+
+`''` is a character or char, but it's not 8-bit ascii 
+in **go**, the word **rune** is used
+
+```go
+func main() {
+	for pos, char := range "Gő!汉字熱" {
+		fmt.Printf("character '%c' starts at byte position %d\n", char, pos)
+	}
+	// character 'G' starts at byte position 0
+	// character 'ő' starts at byte position 1
+	// character '!' starts at byte position 3
+	// character '汉' starts at byte position 4
+	// character '字' starts at byte position 7
+	// character '熱' starts at byte position 10
+}
+```
+
+
+## functions
+
+
+```go
+// parameter shortened types
+func add(x, y int) int {
+	return x + y
+}
+
+//naked return
+func split(sum int) (x, y int){
+	x = sum * 4 / 9
+	y = sum - x
+	return
+}
+
+```
+
+
+### Struct
 
 struct pointer has c-like syntax sugar for `(*p).X => p.X`
 
-## Array
+### Array
 
 ```go
 var a [10]int
@@ -53,7 +124,7 @@ var a [10]int
 
 array cannot be resized
 
-## Slice
+### Slice
 
 match the python way for lower and higher bound
 
@@ -83,30 +154,7 @@ func Pic(dx, dy int) [][]uint8 {
 }
 ```
 
-## strings
 
-`""` is string
-`''` is a character or char, but it's not 8-bit ascii
-
-in **go**, the word **rune** is used
-
->type rune = int32
->
->    rune is an alias for int32 and is equivalent to int32 in all ways. It is
-    used, by convention, to distinguish character values from integer
-    values.
-
-```go
-for pos, char := range "Gő!汉字熱" {
-    fmt.Printf("character '%c' starts at byte position %d\n", char, pos)
-}
-//character 'G' [type => 0] starts at byte position int32
-//character 'ő' [type => 1] starts at byte position int32
-//character '!' [type => 3] starts at byte position int32
-//character '汉' [type => 4] starts at byte position int32
-//character '字' [type => 7] starts at byte position int32
-//character '熱' [type => 10] starts at byte position int32
-```
 
 ## map
 
@@ -139,7 +187,7 @@ func main() {
 
 similar to `with` context management in python
 
-## function
+
 
 ## methods
 
