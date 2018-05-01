@@ -3,22 +3,7 @@ title: "Go"
 date: 2017-12-14T17:45:54-05:00
 tags: [go, programming, concurrency]
 ---
-
-## Context
-
-### Paradim
-
-- compiled
-- concurrent
-- imperative
-- structured
-
-### Authors
-
-original
-- Robert Griesemer
-- Rob Pike (his spouse French Renee)
-- Ken Thompson
+---
 
 ### Doumentation
 
@@ -28,16 +13,11 @@ Go has well balanced the documentation and code by integrating a powerful eco-sy
 2. `godoc fmt Fprintf` or `godoc builtin append` quick terminal check
 3. comments prefix as document stub, but no specific requirements for parameters and return value, as go document tool will dynamically parse it from the source code
 
-
-### Tools
-
-delve debugging server
-
-godoc
-
 # Basics
 
 ## Static Types (Built In)
+
+[builtin](https://golang.org/pkg/builtin) pkg
 
 ```go
 bool
@@ -55,9 +35,6 @@ complex64 complex128
 
 ```
 
-
-`interface{}` is any type or `object` in other OOP-oriented language
-
 ### Type Casting
 
 The expression T(v) converts the value v to the type T
@@ -69,6 +46,13 @@ v := 'a'
 //v is of type int32  97
 fmt.Printf("v is of type %T  %v\n", v, v) 
 v := "a"  //v is of type string  a
+```
+
+### error
+```go
+type error interface {
+        Error() string
+}
 ```
 
 ### Strings
@@ -92,51 +76,83 @@ func main() {
 }
 ```
 
+## Dynamic Types
 
-## functions
-
+### Pointers
 
 ```go
-// parameter shortened types
-func add(x, y int) int {
-	return x + y
-}
+// has no pointer arthimetic
+var p *int
+i := 42
+p = &i
 
-//naked return
-func split(sum int) (x, y int){
-	x = sum * 4 / 9
-	y = sum - x
-	return
-}
-
+fmt.Println(*p)
+*p = 21
 ```
-
 
 ### Struct
 
-struct pointer has c-like syntax sugar for `(*p).X => p.X`
+```go
+type Point struct{
+	x int
+	y int
+}
+// Struct fields can be accessed through a struct pointer.
+// struct pointer has c-like syntax sugar for `(*p).x => p.x`
+
+v := Point{1,2}  // struct literals
+p = &v
+p.x = 100
+
+w := Point{x:1}  // implies y:0
+```
 
 ### Array
 
 ```go
 var a [10]int
+primes := [6]int{2, 3, 5, 7, 11, 13}
+primes := [...]int{2,3,5,7}
 ```
+array cannot be resized, array variable is not the pointer to the first element. 
+each re-assignment is a copy of the whole content
 
-array cannot be resized
 
 ### Slice
 
-match the python way for lower and higher bound
+> a slice is three-item descriptor (pointer to array, length, capacity)
 
-slice literal `a := []int{1,2,3,4}`
+```go
+//type, len, cap
+make([]int, 10, 100) //[0 0 0 0 0 0 0 0 0 0]
+```
+slice literal `a := []int{1,2,3,4}`:
 1. create an array of fixed size 4
-2. create the slice references the array
+2. create the slice references to the array
 
-*length* and *capacity*
+A slice does not store any data, it describes a section of an underlying array
+
+slice range *matches the python way for lower and higher bound*
+
+slice *length* and *capacity*
 
 [usage and internals](https://blog.golang.org/go-slices-usage-and-internals)
 
 ![diagram](https://blog.golang.org/go-slices-usage-and-internals_slice-2.png)
+
+#### append (built-in)
+
+> `func append(slice []T, elements ...T) []T`
+
+```go
+x := []int{1,2,3}
+y := []int{4,5,6}
+x = append(x, y...)
+// the y... is like the unpack in python where you have a tuple x, and *x is to unpack the tuple into elements
+```
+
+
+#### 2 dimensions
 
 ```go
 
@@ -154,9 +170,15 @@ func Pic(dx, dy int) [][]uint8 {
 }
 ```
 
+### make vs new
 
+-  `new` allocates memory, zeros it and returns its address as *T (*abstract types*)
 
-## map
+- `make` (built-in func): creates *Slices, Maps and Channel* only and returns **Initialized** (not zeroed) values as T (not *T)
+
+	these three types represent **references** to data structure underneath. recall that the example of slice, it needs an array initialized to reference
+
+### map
 
 ```go
 
@@ -183,10 +205,89 @@ func main() {
 }
 ```
 
-## defer
 
-similar to `with` context management in python
 
+
+## Interface{}
+
+`interface{}` is any type or `object` in other OOP-oriented language
+
+
+# Control Structure 
+
+```go
+// loop
+for i:=1; i<100; i++ {
+
+}
+for i < 100 {
+
+}
+for {
+
+}
+
+// if 
+//Variables declared by the statement are only in scope until the end of the if.
+
+if err := scanner.Err(); err != nil {
+		fmt.Fprintln(os.Stderr, "reading input:", err)
+	}
+
+//switch
+//Go only runs the selected case, not all the cases that follow
+
+//Switch without a condition is the same as switch true
+switch os := runtime.GOOS; os {
+case "darwin":
+	fmt.Println("OS X.")
+case "linux":
+	fmt.Println("Linux.")
+default:
+	// freebsd, openbsd,
+	// plan9, windows...
+	fmt.Printf("%s.", os)
+}
+
+//goto
+
+
+
+//defer
+//Deferred function calls are pushed onto a stack. When a function returns, its deferred calls are executed in LIFO order
+func main() {
+	defer fmt.Println("world")
+	fmt.Println("hello")
+}
+
+
+
+```
+
+
+
+
+
+
+
+
+## functions
+
+
+```go
+// parameter shortened types
+func add(x, y int) int {
+	return x + y
+}
+
+//naked return
+func split(sum int) (x, y int){
+	x = sum * 4 / 9
+	y = sum - x
+	return
+}
+
+```
 
 
 ## methods
@@ -208,7 +309,11 @@ func Abs(v Vertex) float64 {
 	return math.Sqrt(v.X*v.X + v.Y*v.Y)
 }
 
-
+//pointer receiver 
+func (v *Vertex) Scale(coef int) {
+	v.x = v.x * coef
+	v.y = v.y * coef
+}
 v := Vertex{3, 4}
 
 v.abs() // method
@@ -216,7 +321,14 @@ Abs(v) // function
 
 ```
 
-## enum
+
+## constants
+
+- created at compile time
+- numbers, characters(runes), strings and boolean
+- math.Sin(math.Pi/4) is not as Sin is func call
+
+### iota
 
 const iota = 0 // Untyped int.
 
@@ -226,18 +338,18 @@ parenthesized) const declaration. It is zero-indexed.
 
 ![iota](https://camo.githubusercontent.com/a375bc9aaf7f25c99104936003d3a72f28da4225/68747470733a2f2f63646e2d696d616765732d312e6d656469756d2e636f6d2f6d61782f323030302f312a7366414854337a6b2d576a7853445249444d706461412e676966)
 [visual guide to enums](https://blog.learngoprogramming.com/golang-const-type-enums-iota-bc4befd096d3)
+ 
+
+
 
 ## range
 
 range can iterate over *slices, arrays, strings, maps and channels*
 
-## make vs new
-
-- `new` allocates memory, zeros it and returns its address as *T (*abstract types*)
-
-- make: creates *Slices, Maps and Channel* only and returns **Initialized** values as T
-
-	builtin types
+```go
+for idx := range nums //drop ,value
+for _, val := range nums
+```
 
 ## composite literal
 
@@ -251,3 +363,33 @@ return &File{fd: fd, name: name}
 - %v
 - %+v => all fields for struct
 - %#v => go syntax `main.stack{pos:2, data:[10]int{20, 40, 0, 0, 0, 0, 0, 0, 0, 0}}`
+
+
+##
+
+```go
+
+// word count
+package main
+
+import (
+	"golang.org/x/tour/wc"
+	"strings"
+)
+
+//WordCount returns stats of string words
+func WordCount(s string) map[string]int {
+	words := strings.Fields(s)
+	stats := make(map[string]int)
+	for _, word := range words {
+		stats[word]++
+	}
+	return stats
+}
+
+func main() {
+	wc.Test(WordCount)
+}
+
+
+```
