@@ -1,7 +1,6 @@
 ---
 title: "Docker Dev"
 date: 2019-12-02T22:12:43-05:00
-draft: true
 ---
 
 # commons installs
