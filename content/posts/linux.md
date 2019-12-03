@@ -21,6 +21,7 @@ alias gcm="git commit -m"
 alias gk="git checkout"
 alias gd='git diff'
 alias gdc='git diff --cached'
+alias tri="tree -I '*.pyc|__pycache__|__init__.py'"
 
 <!-- export JAVA_HOME=$(/usr/libexec/java_home) -->
 export ANSIBLE_SSH_CONTROL_PATH='/tmp/asb-%%h-%%p-%%r'
